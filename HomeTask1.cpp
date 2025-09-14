@@ -6,7 +6,7 @@ using namespace std;
 
 int function(string& str, int length)
 {
-    if (str.length() == length) throw 10;
+    if (str.length() == length) throw std::exception();
     else return str.length();
 }
 
@@ -28,15 +28,13 @@ int main()
             cout << "Введите слово: ";
             cin >> str;
 
-            cout << "Длинна слова \"" + str + "\" равна " + to_string(function(str, length)) << endl;
+            cout << "Длина слова \"" + str + "\" равна " + to_string(function(str, length)) << endl;
         }
-        catch (int err)
-        {
-            if (err == 10)
-            {
+        catch (const std::exception& err)
+        {          
                 cout << "Вы ввели слово запретной длины! До свидания" << endl;
                 break;
-            }
+            
         }
 
     }
